@@ -1,0 +1,12 @@
+{
+  "name": "costumers-database-ui-",
+  "version": "1.0.0",
+  "description": "Costumers DataBase UI with node js and express js ,monogDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
