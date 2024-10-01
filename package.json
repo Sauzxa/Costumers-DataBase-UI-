@@ -2,16 +2,21 @@
   "name": "costumers-database-ui-",
   "version": "1.0.0",
   "description": "Costumers DataBase UI with node js and express js ,monogDB",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "run:dev": "nodemon app.js"
+    "start": "node app.js",
+    "watch": "nodemon --ext *"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect-livereload": "^0.6.1",
     "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
     "express": "^4.21.0",
+    "livereload": "^0.9.3",
+    "mongodb": "6.9",
     "mongoose": "^8.7.0"
   }
 }
