@@ -33,7 +33,15 @@ mongoose.connect("mongodb+srv://sauzxa:node-1233@learning-mongodb.ei6rl.mongodb.
   .catch((err) => {
     console.log("Error connecting to MongoDB:", err);
   });
-
+  // get all data 
+  app.get("/" , (req,res)=>{
+    Customer.find().then(()=>{
+      res.render("index")
+    }).catch((err)=>{
+      console.log(err);
+      
+    })
+  })
 
   // import customer
  const Customer = require('./models/customerSchema')
