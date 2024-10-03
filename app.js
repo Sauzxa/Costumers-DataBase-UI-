@@ -57,8 +57,35 @@ mongoose.connect("mongodb+srv://sauzxa:node-1233@learning-mongodb.ei6rl.mongodb.
 app.get('/user/add.html', (req, res) => {
   res.render("user/add"); // conditional rendering (render the add.ejs)
 });
-// post request 
+// edit Customer 
+app.get('/edit/:id', (req, res) => {
+ Customer.findById(req.params.id).then((result)=>{
+   res.render("user/edit", {object : result}); 
 
+ })
+
+
+
+});
+// rendering the view page // only for the clicked one 
+app.get('/user/:id',(req,res)=>{
+   
+  Customer.findById(req.params.id)
+  .then((result)=>{
+   console.log(result);
+   
+    res.render("user/view",{object : result , moment : moment})
+   
+  }).catch((err)=>{
+    console.log(err);
+      
+ })
+
+
+})
+
+
+// post request // create the doucment in the collection 'Customer'
 app.post("/user/add.html", (req, res) => {
   console.log("Received form data:", req.body);  // Log the form data for inspection
 
@@ -73,20 +100,7 @@ app.post("/user/add.html", (req, res) => {
     });
 });
 
-// rendering the view page // only for the clicked one 
-app.get('/user/:id',(req,res)=>{
-   
-   Customer.findById(req.params.id)
-   .then((result)=>{
-    console.log(result);
-    
-     res.render("user/view",{object : result , moment : moment})
-    
-   }).catch((err)=>{
-     console.log(err);
-       
-  })
 
 
-})
+
 

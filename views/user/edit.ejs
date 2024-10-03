@@ -6,7 +6,7 @@
       rel="stylesheet"
       href="../bootstrap-icons-1.10.5/font/bootstrap-icons.min.css"
     />
-    <link rel="shortcut icon"  href="../public/img/user.png" type="image/x-icon">
+    <link rel="shortcut icon"  href="/img/user.png" type="image/x-icon">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -258,13 +258,13 @@
           aria-expanded="false"
         >
           <img
-            src="./img/me.JPG"
+            src="/img/user.png"
             alt=""
             width="32"
             height="32"
             class="rounded-circle me-2"
           />
-          <strong class="sidebar-text">Ali Hassan</strong>
+          <strong class="sidebar-text">Sauzxa</strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
           <li><a class="dropdown-item" href="#">New project...</a></li>
@@ -284,7 +284,7 @@
             class="container-fluid justify-content-center justify-content-md-between"
           >
             <a class="navbar-brand fw-medium fs-3 mb-1 mb-md-0"
-              >Course <sup>4</sup> arab</a
+              >Edit Customer:</a
             >
 
             <form class="d-flex" role="search">
@@ -305,11 +305,11 @@
         <nav class="px-2 mt-4 d-flex flex-wrap justify-content-between" aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Ali Hassan</li>
+            <li class="breadcrumb-item active" aria-current="page"><%= object.firstName %> <%= object.lastName %></li>
           </ol>
 
 
-          <p class="me-md-5"> <span class="fw-medium fs-6">Id :</span> 6487021520bcf1af6319484c</p>
+          <p class="me-md-5"> <span class="fw-medium fs-6">Id : <%= object._id %></p>
         </nav>
 
 
@@ -323,7 +323,7 @@
           <div class="col-md-6">
             <label for="inputfirstName4" class="form-label">First Name:</label>
             <input
-              placeholder="Ali..."
+              value="<%= object.firstName %>"
               type="text"
               class="form-control"
               id="inputfirstName4"
@@ -332,8 +332,8 @@
           <div class="col-md-6">
             <label for="inputlastName4" class="form-label">Last Name:</label>
             <input
-              placeholder="Hassan..."
-              type="text"
+            value="<%= object.lastName %>"
+            type="text"
               class="form-control"
               id="inputlastName4"
             />
@@ -342,7 +342,8 @@
           <div class="col-md-6">
             <label for="inputemail4" class="form-label">Email:</label>
             <input
-              placeholder="ali@gmail.com"
+            value="<%= object.email %>"
+
               type="email"
               class="form-control"
               id="inputemail4"
@@ -351,7 +352,8 @@
           <div class="col-md-6">
             <label for="inputtele4" class="form-label">Telephone:</label>
             <input
-              placeholder="011987899"
+            value="<%= object.mobileNumber %>"
+
               type="number"
               class="form-control"
               id="inputtele4"
@@ -362,7 +364,8 @@
             <div class="col-md-6">
               <label for="inputage4" class="form-label">Age:</label>
               <input
-                placeholder="Your Age: ..."
+              value="<%= object.age %>"
+
                 type="number"
                 class="form-control"
                 id="inputage4"
@@ -376,8 +379,8 @@
               <select id="inputCountry" class="form-select">
                 <option selected hidden disabled>Choose here ...</option>
 
-                <option>Morocco</option>
-                <option>Egypt</option>
+                <option <%= object.country ==="Morocco"? "selected":null %> >Morocco</option>
+                <option <%= object.country ==="Egypt"? "selected":null %> >Egypt</option>
               </select>
             </div>
           </div>
@@ -387,8 +390,8 @@
               <label for="inputGender" class="form-label">Gender:</label>
               <select id="inputGender" class="form-select">
                 <option selected hidden disabled>Choose here ...</option>
-                <option>Male</option>
-                <option>Female</option>
+                <option <%= object.gender ==="Male"? "selected":null %> >Male</option>
+                <option <%= object.gender ==="Female"? "selected":null %> >Female</option>
               </select>
             </div>
           </div>
