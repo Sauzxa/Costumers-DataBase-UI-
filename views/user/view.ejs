@@ -6,7 +6,7 @@
       rel="stylesheet"
       href="../bootstrap-icons-1.10.5/font/bootstrap-icons.min.css"
     />
-    <link rel="shortcut icon" href="./img/user.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/user.png" type="image/x-icon">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -245,7 +245,7 @@
               <svg class="bi pe-none me-2" width="16" height="16">
                 <use xlink:href="#people-circle" />
               </svg>
-              <span class="sidebar-text"> Add Customers </span>
+              <span class="sidebar-text"> Add Customers : </span>
             </a>
           </li>
         </ul>
@@ -258,13 +258,13 @@
             aria-expanded="false"
           >
             <img
-              src="/Costumers-DataBase-UI-/public/img/user.jpg"
+              src="/img/user.png"
               alt=""
               width="32"
               height="32"
               class="rounded-circle me-2"
             />
-            <strong class="sidebar-text">Ali Hassan</strong>
+            <strong class="sidebar-text"></strong>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
             <li><a class="dropdown-item" href="#">New project...</a></li>
@@ -284,7 +284,7 @@
             class="container-fluid justify-content-center justify-content-md-between"
           >
             <a class="navbar-brand fw-medium fs-3 mb-1 mb-md-0"
-              >Course <sup>4</sup> arab</a
+              >Customer Details :</a
             >
 
             <form class="d-flex" role="search">
@@ -309,67 +309,69 @@
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">
-              Ali Hassan
+          <%= object.firstName %> <%= object.lastName %>
             </li>
           </ol>
 
           <p class=" ">
-            <span class="fw-medium fs-6">Id :</span> 6487021520bcf1af6319484c
+            <span class="fw-medium fs-6">Id :</span> <%= object._id %>
           </p>
         </nav>
-
+      
         <table
-          style="width: 88%"
-          class="ms-1 table mt-5 table-striped table-bordered"
-        >
-          <thead>
-            <tr>
-              <th scope="col">First Name</th>
-              <th class="fw-normal" scope="col">Ali</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Last Name</th>
-              <td>Hassan</td>
-            </tr>
+        style="width: 88%"
+        class="ms-1 table mt-5 table-striped table-bordered"
+      >
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th class="fw-normal" scope="col"><%= object.firstName %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Last Name</th>
+            <td><%= object.lastName %></td>
+          </tr>
 
-            <tr>
-              <th scope="row">Telephone</th>
-              <td>Test1</td>
-            </tr>
+          <tr>
+            <th scope="row">Telephone</th>
+            <td><%= object.mobileNumber %></td>
+          </tr>
 
-            <tr>
-              <th scope="row">Email</th>
-              <td>ali7assan@gmail.com</td>
-            </tr>
+          <tr>
+            <th scope="row">Email</th>
+            <td><%= object.email %></td>
+          </tr>
 
-            <tr>
-              <th scope="row">Gender</th>
-              <td>Test3</td>
-            </tr>
+          <tr>
+            <th scope="row">Gender</th>
+            <td><%= object.gender %></td>
+          </tr>
 
-            <tr>
-              <th scope="row">Age</th>
-              <td>Test4</td>
-            </tr>
+          <tr>
+            <th scope="row">Age</th>
+            <td><%= object.age%></td>
+          </tr>
 
-            <tr>
-              <th scope="row">Country</th>
-              <td>Test5</td>
-            </tr>
+          <tr>
+            <th scope="row">Country</th>
+            <td><%= object.country %></td>
+          </tr>
 
-            <tr>
-              <th scope="row">Created on</th>
-              <td>Test6</td>
-            </tr>
+          <tr>
+            <th scope="row">Created on</th>
+            <td><%= moment(object.createdAt).fromNow() %></td>
+          </tr>
 
-            <tr>
-              <th scope="row">Last Update</th>
-              <td>Test7</td>
-            </tr>
-          </tbody>
-        </table>
+          <tr>
+            <th scope="row">Last Update</th>
+            <td> <%= moment(object.updatedAt).fromNow() %></td>
+          </tr>
+        </tbody>
+      </table>      
+      
+       
       </section>
     </main>
     <script src="../js/bootstrap.bundle.min.js"></script>

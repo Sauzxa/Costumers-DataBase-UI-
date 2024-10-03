@@ -10,6 +10,10 @@ const customerSchema = new Schema({
   age: String,          // Fix: Use 'String' (capital S)
   country: String,      // Fix: Use 'String' (capital S)
   gender: String        // Fix: Use 'String' (capital S)
+}
+,
+{
+  timestamps:true
 });
 
 // Create the model

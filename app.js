@@ -5,6 +5,7 @@ const connectLivereload = require("connect-livereload");
 const app = express();
 const port = 3000;
 app.use(express.urlencoded({extended : true}))
+var moment = require("moment") // library for time handiling
 
 app.set('view engine', 'ejs'); 
 app.use(express.static('public'));
@@ -33,24 +34,26 @@ mongoose.connect("mongodb+srv://sauzxa:node-1233@learning-mongodb.ei6rl.mongodb.
   .catch((err) => {
     console.log("Error connecting to MongoDB:", err);
   });
-  // get all data 
+ 
+   // import customer
+ const Customer = require('./models/customerSchema')
+  
+
+  // get all data  // render all objects + stack the result in an array
   app.get("/" , (req,res)=>{
-    Customer.find().then(()=>{
-      res.render("index")
+    Customer.find()
+    .then((result)=>{
+      console.log(result);
+      
+      res.render("index" ,{arr :result , moment:moment}) // cuz in index.ejs i name it moment also
     }).catch((err)=>{
       console.log(err);
       
     })
   })
 
-  // import customer
- const Customer = require('./models/customerSchema')
-  
-// Route
-app.get('/', (req, res) => {
-  res.render("index"); // Render with dynamic userName
-});
-// get one
+ 
+// get and render the add page 
 app.get('/user/add.html', (req, res) => {
   res.render("user/add"); // conditional rendering (render the add.ejs)
 });
@@ -69,4 +72,21 @@ app.post("/user/add.html", (req, res) => {
       res.status(500).send("An error occurred while saving the document.");
     });
 });
+
+// rendering the view page // only for the clicked one 
+app.get('/user/:id',(req,res)=>{
+   
+   Customer.findById(req.params.id)
+   .then((result)=>{
+    console.log(result);
+    
+     res.render("user/view",{object : result , moment : moment})
+    
+   }).catch((err)=>{
+     console.log(err);
+       
+  })
+
+
+})
 

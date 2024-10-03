@@ -262,7 +262,7 @@
               height="32"
               class="rounded-circle me-2"
             />
-            <strong class="sidebar-text">User</strong>
+            <strong class="sidebar-text">Sauzxa</strong>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
             <li><a class="dropdown-item" href="#">New project...</a></li>
@@ -298,75 +298,84 @@
             </form>
           </div>
         </nav>
-
-        <table
-          style="width: 99%"
-          class="text-center mx-auto table mt-5 table-striped table-bordered"
-        >
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Full Name</th>
-              <th scope="col">Gender</th>
-              <th scope="col">Country</th>
-              <th scope="col">Age</th>
-              <th scope="col">Last updated</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>mohammed</td>
-              <td>samir</td>
-              <td>algeria</td>
-              <td>30</td>
-              <td>1 days ago              </td>
-              <td>
-                <a
-                  data-bs-toggle="tooltip"
-                  data-bs-title="View details"
-                  data-bs-placement="top"
-                  class="btn btn-primary btn-sm"
-                  href="./user/view.html"
-                  ><i class="bi bi-eye"></i
-                ></a>
-
-                <a
-                  data-bs-toggle="tooltip"
-                  data-bs-title="Edit user"
-                  data-bs-placement="top"
-                  class="btn btn-primary btn-sm"
-                  href="./user/edit.html"
-                >
-                  <i class="bi bi-pencil"></i>
-                </a>
-                <button
-                  data-bs-toggle="tooltip"
-                  data-bs-title="Delete user"
-                  data-bs-placement="top"
-                  class="btn btn-danger btn-sm"
-                >
-                  <i class="bi bi-trash"></i>
-                </button>
-              </td>
-            </tr>
-      
+         <% if (arr.length === 0) { %>
+              <h1 style="margin: 20px; color: white; text-align: center;" >No data Available</h1>
+         <% } %>    
+          <% if (arr.length > 0) { %>
+            <table
+            style="width: 99%"
+            class="text-center mx-auto table mt-5 table-striped table-bordered"
+          >
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Country</th>
+                <th scope="col">Age</th>
+                <th scope="col">Last updated</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% arr.forEach((item , index)=> {   %>
+                <tr>
+                  <th scope="row"><%= index + 1 %></th>
+                  <td><%= item.firstName %> <%= item.lastName %></td>
+                  <td><%= item.gender %></td>
+                  <td><%= item.country %></td>
+                  <td><%= item.age %></td>
+                  <td><%= moment(item.updatedAt).fromNow(); %></td>
+                  <td>
+                    <!-- view details link  -->
+                    <a
+                      data-bs-toggle="tooltip"
+                      data-bs-title="View details"
+                      data-bs-placement="top"
+                      class="btn btn-primary btn-sm"
+                      href="./user/<%= item._id %>"
+                      ><i class="bi bi-eye"></i
+                    ></a>
+    
+                    <a
+                      data-bs-toggle="tooltip"
+                      data-bs-title="Edit user"
+                      data-bs-placement="top"
+                      class="btn btn-primary btn-sm"
+                      href="./user/edit.html"
+                    >
+                      <i class="bi bi-pencil"></i>
+                    </a>
+                    <button
+                      data-bs-toggle="tooltip"
+                      data-bs-title="Delete user"
+                      data-bs-placement="top"
+                      class="btn btn-danger btn-sm"
+                    >
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <% }) %>
+              
         
-      
           
-          
-      
+        
             
-      
-
-      
-
-
-      
-      
-          </tbody>
-        </table>
+            
+        
+              
+        
+  
+        
+  
+  
+        
+        
+            </tbody>
+          </table>
+          <% } %>
+       
       </section>
     </main>
     <script src="./js/bootstrap.bundle.min.js"></script>
