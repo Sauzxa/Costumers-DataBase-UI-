@@ -6,6 +6,9 @@ const app = express();
 const port = 3000;
 app.use(express.urlencoded({extended : true}))
 var moment = require("moment") // library for time handiling
+var methodOverride = require("method-override")
+app.use(methodOverride('_methode')) // to override the methode ex : post -> put // to change datac//_methode howa li nasta3mlo bach ndir override
+
 
 app.set('view engine', 'ejs'); 
 app.use(express.static('public'));
@@ -99,6 +102,32 @@ app.post("/user/add.html", (req, res) => {
       res.status(500).send("An error occurred while saving the document.");
     });
 });
+// put request // change it in database
+app.put("/edit/:id", (req, res) => {
+
+     Customer.updateOne({_id : req.params.id} , req.body) // update with the body content
+     .then((params)=>{
+      res.redirect('/')
+     })
+     .catch((err)=>{
+      console.log(err);
+      
+     })
+});
+
+//delete Customer 
+app.delete("/delete/:id", (req, res) => {
+
+  Customer.deleteOne({_id : req.params.id}) // update with the body content
+  .then(()=>{
+   res.redirect('/')
+  })
+  .catch((err)=>{
+   console.log(err);
+   
+  })
+});
+
 
 
 

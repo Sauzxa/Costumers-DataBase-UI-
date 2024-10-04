@@ -319,7 +319,7 @@
 
 
 
-        <form class="mx-0 row gx-3 gy-4 mt-2">
+        <form action="/edit/<%= object._id %>?_methode=PUT" method="post" class="mx-0 row gx-3 gy-4 mt-2">
           <div class="col-md-6">
             <label for="inputfirstName4" class="form-label">First Name:</label>
             <input
@@ -327,6 +327,7 @@
               type="text"
               class="form-control"
               id="inputfirstName4"
+              name="firstName"
             />
           </div>
           <div class="col-md-6">
@@ -336,6 +337,7 @@
             type="text"
               class="form-control"
               id="inputlastName4"
+              name="lastName"
             />
           </div>
 
@@ -347,6 +349,7 @@
               type="email"
               class="form-control"
               id="inputemail4"
+              name="email"
             />
           </div>
           <div class="col-md-6">
@@ -357,6 +360,7 @@
               type="number"
               class="form-control"
               id="inputtele4"
+              name="mobileNumber"
             />
           </div>
 
@@ -369,6 +373,7 @@
                 type="number"
                 class="form-control"
                 id="inputage4"
+                name="age"
               />
             </div>
           </div>
@@ -376,7 +381,7 @@
           <div>
             <div class="col-md-6">
               <label for="inputCountry" class="form-label">Country:</label>
-              <select id="inputCountry" class="form-select">
+              <select name="country" id="inputCountry" class="form-select">
                 <option selected hidden disabled>Choose here ...</option>
 
                 <option <%= object.country ==="Morocco"? "selected":null %> >Morocco</option>
@@ -388,7 +393,7 @@
           <div>
             <div class="col-md-6">
               <label for="inputGender" class="form-label">Gender:</label>
-              <select id="inputGender" class="form-select">
+              <select name="gender" id="inputGender" class="form-select">
                 <option selected hidden disabled>Choose here ...</option>
                 <option <%= object.gender ==="Male"? "selected":null %> >Male</option>
                 <option <%= object.gender ==="Female"? "selected":null %> >Female</option>
@@ -442,9 +447,11 @@
               >
                 Close
               </button>
-              <button type="button" class="btn btn-danger">
+             <form action="/delete/<%= object._id %>?_methode=DELETE" method="post">
+              <button type="submit" type="button" class="btn btn-danger">
                 Delete
               </button>
+             </form>
             </div>
           </div>
         </div>
