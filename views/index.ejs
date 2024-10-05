@@ -6,7 +6,7 @@
       rel="stylesheet"
       href="./bootstrap-icons-1.10.5/font/bootstrap-icons.min.css"
     />
-    <link rel="shortcut icon"  href="./img/user.png"  type="image/x-icon">
+    <link rel="shortcut icon"  href="/img/user.png"  type="image/x-icon">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
@@ -244,7 +244,7 @@
               <svg class="bi pe-none me-2" width="16" height="16">
                 <use xlink:href="#people-circle" />
               </svg>
-              <span class="sidebar-text"> Add Customers </span>
+              <span class="sidebar-text"> Add Customers : </span>
             </a>
           </li>
         </ul>
@@ -257,7 +257,7 @@
             aria-expanded="false"
           >
             <img
-              src="./img/user.png"  alt=""
+              src="/img/user.png"  alt=""
               width="32"
               height="32"
               class="rounded-circle me-2"
@@ -282,11 +282,12 @@
             class="container-fluid justify-content-center justify-content-md-between"
           >
             <a class="navbar-brand fw-medium fs-3 mb-1 mb-md-0">
-              Customers</a
+              Customers :</a
             >
 
-            <form class="d-flex" role="search">
+            <form action="/search" method="post" class="d-flex" role="search">
               <input
+                name="searchText"
                 class="form-control me-2"
                 type="search"
                 placeholder="Search"
@@ -345,7 +346,7 @@
                       href="./edit/<%= item._id %>">
                       <i class="bi bi-pencil"></i>
                     </a>
-                 <form action="/delete/<%= item._id %>?_methode=DELETE" method="post">
+                 <form style="display: inline;" action="/delete/<%= item._id %>?_methode=DELETE" method="post">
                   <button
                   data-bs-toggle="tooltip"
                   data-bs-title="Delete user"

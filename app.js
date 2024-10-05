@@ -102,6 +102,28 @@ app.post("/user/add.html", (req, res) => {
       res.status(500).send("An error occurred while saving the document.");
     });
 });
+// search the Customers  
+
+app.post("/search", (req, res) => {
+         Customer.find( {
+          $or: [
+            { firstName: req.body.searchText },
+            { lastName: req.body.searchText }
+          ]
+        }).then((result)=>{
+             res.render('user/search', {arr : result})
+             
+         })
+         .catch((err)=>{
+          console.log(err);
+          
+         })
+   
+
+});
+
+
+
 // put request // change it in database
 app.put("/edit/:id", (req, res) => {
 
