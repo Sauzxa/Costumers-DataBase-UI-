@@ -2,8 +2,11 @@ const express = require('express');
 const mongoose = require("mongoose");
 const livereload = require("livereload"); // Add livereload package
 const connectLivereload = require("connect-livereload");
+require("dotenv").config()
 const app = express();
-const port = 3000;
+const url = process.env.MONGO_URl;
+const port = process.env.PORT
+
 app.use(express.urlencoded({extended : true}))
 var moment = require("moment") // library for time handiling
 var methodOverride = require("method-override")
@@ -25,9 +28,8 @@ liveReloadServer.server.once("connection", () => {
     liveReloadServer.refresh("/"); // Refresh the page
   }, 100);
 });
-
 // MongoDB connection
-mongoose.connect("mongodb+srv://sauzxa:node-1233@learning-mongodb.ei6rl.mongodb.net/Customer")
+mongoose.connect(url)
   .then(() => {
     console.log("Connected to MongoDB");
     app.listen(port, () => {
